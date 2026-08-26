@@ -5,19 +5,55 @@ import HeroSection from "./components/HeroSection";
 import NavDots from "./components/NavDots";
 import Sidebar from "./components/Sidebar";
 import SkillsSection from "./components/SkillsSection";
-import { educationItems, sectionIds, workItems } from "./data/portfolioData";
+import { sectionIds } from "./data/portfolioData";
+import { locales } from "./data/locales";
 
 export default function App() {
   const heroRef = useRef(null);
   const isAutoScrollingRef = useRef(false);
   const lastScrollActionRef = useRef(0);
   const [activeTab, setActiveTab] = useState("experience");
-  const [activeTimeline, setActiveTimeline] = useState(null);
+  const [activeTimeline, setActiveTimeline] = useState(0);
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const scrollTickingRef = useRef(false);
   const prevSidebarVisibleRef = useRef(false);
   const prevActiveSectionRef = useRef("hero");
+
+  // Multi-Language State (Default EN)
+  const [currentLang, setCurrentLang] = useState(() => {
+    return localStorage.getItem("portfolio_lang") || "en";
+  });
+
+  // Dark Mode State (Persisted in localStorage)
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const saved = localStorage.getItem("portfolio_theme");
+    if (saved) return saved === "dark";
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  });
+
+  // Sync Dark Mode class with <html> element
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("portfolio_theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("portfolio_theme", "light");
+    }
+  }, [isDarkMode]);
+
+  // Sync Language with localStorage
+  const handleLanguageChange = useCallback((langCode) => {
+    setCurrentLang(langCode);
+    localStorage.setItem("portfolio_lang", langCode);
+  }, []);
+
+  const handleThemeToggle = useCallback(() => {
+    setIsDarkMode((prev) => !prev);
+  }, []);
+
+  const t = locales[currentLang] || locales.en;
 
   useEffect(() => {
     const onScroll = () => {
@@ -143,23 +179,39 @@ export default function App() {
 
   return (
     <>
-      <HeroSection heroRef={heroRef} />
+      <HeroSection 
+        heroRef={heroRef} 
+        t={t.hero} 
+      />
 
-      <div id="main-content" className="layout">
-        <NavDots sectionIds={sectionIds} activeSection={activeSection} scrollToSection={scrollToSection} />
-        <Sidebar sidebarVisible={sidebarVisible} />
+      <div id="main-content" className="relative w-full overflow-x-hidden bg-background dark:bg-[#0b131c] transition-colors duration-300">
+        <NavDots 
+          sectionIds={sectionIds} 
+          activeSection={activeSection} 
+          scrollToSection={scrollToSection} 
+          t={t.nav}
+          isDarkMode={isDarkMode}
+          onThemeToggle={handleThemeToggle}
+          currentLang={currentLang}
+          onLanguageChange={handleLanguageChange}
+        />
+        <Sidebar 
+          sidebarVisible={sidebarVisible} 
+          t={t.sidebar}
+        />
 
-        <main className="main-content" style={{ marginLeft: sidebarVisible ? "var(--sidebar-width)" : "0" }}>
+        <main className={`transition-all duration-500 ease-in-out w-full ${sidebarVisible ? "md:ml-[300px] md:w-[calc(100%-300px)]" : "ml-0"}`}>
           <ExperienceEducationSection
             activeTab={activeTab}
             handleTabClick={handleTabClick}
-            workItems={workItems}
-            educationItems={educationItems}
+            workItems={t.experienceEducation.workItems}
+            educationItems={t.experienceEducation.educationItems}
             activeTimeline={activeTimeline}
             setActiveTimeline={setActiveTimeline}
+            t={t.experienceEducation}
           />
-          <SkillsSection />
-          <AboutSection />
+          <SkillsSection t={t.skills} />
+          <AboutSection t={t.about} />
         </main>
       </div>
     </>
