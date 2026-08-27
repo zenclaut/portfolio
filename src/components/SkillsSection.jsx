@@ -76,6 +76,31 @@ function SkillsSection({ t }) {
             {t?.sideProjects || "Current Side Projects"}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+            {/* 1. Face Mask Classification */}
+            <a
+              href="https://zenclaut.github.io/face-mask-ai/"
+              target="_blank"
+              rel="noreferrer"
+              className="flex flex-col justify-center min-h-[140px] p-4 bg-gradient-to-br from-white to-gray-50 dark:from-slate-800 dark:to-slate-900 rounded-lg border border-[#dbe1e8] dark:border-slate-700/80 relative overflow-hidden group hover:shadow-xl hover:border-[#005e52]/30 dark:hover:border-secondary/50 transition-all duration-300 no-underline"
+            >
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary" />
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+                <span className="px-2.5 py-1 rounded-md text-[0.72rem] font-semibold text-secondary dark:text-secondary bg-[#009688]/10 dark:bg-secondary/20 border border-[#009688]/25 dark:border-secondary/30 whitespace-nowrap">
+                  {t?.projects?.mlProject?.status || "Completed · May 2026"}
+                </span>
+                <span className="inline-flex items-center gap-1.5 text-[0.72rem] font-medium text-secondary dark:text-secondary bg-[#009688]/10 dark:bg-secondary/15 border border-[#009688]/20 dark:border-secondary/25 px-2 py-1 rounded-md transition-all duration-300 group-hover:bg-secondary group-hover:text-white dark:group-hover:bg-secondary dark:group-hover:text-white group-hover:border-secondary group-hover:shadow-md">
+                  face-mask-ai <i className="fas fa-external-link-alt text-[10px]" />
+                </span>
+              </div>
+              <h4 className="text-primary dark:text-secondary text-base font-semibold m-0 group-hover:text-secondary dark:group-hover:text-white transition-colors">
+                {t?.projects?.mlProject?.title || "Face Mask Classification"}
+              </h4>
+              <p className="text-slate-600 dark:text-slate-300 text-[0.82rem] leading-relaxed m-0 mt-1">
+                {t?.projects?.mlProject?.desc || "A ResNet-based deep transfer learning pipeline with 4-class classification engineered for high-accuracy real-time mask compliance."}
+              </p>
+            </a>
+
+            {/* 2. Finance App */}
             <a
               href="https://finappy.vercel.app"
               target="_blank"
@@ -98,6 +123,8 @@ function SkillsSection({ t }) {
                 {t?.projects?.financeApp?.desc || "A personal finance tracker for budgeting, expenses, and monthly reports."}
               </p>
             </a>
+
+            {/* 3. Web Game */}
             <div className="flex flex-col justify-center min-h-[140px] p-4 bg-gradient-to-br from-white to-gray-50 dark:from-slate-800 dark:to-slate-900 rounded-lg border border-[#dbe1e8] dark:border-slate-700/80 relative overflow-hidden group hover:shadow-xl hover:border-[#005e52]/30 dark:hover:border-secondary/50 transition-all duration-300">
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary" />
               <div className="flex items-center justify-between gap-2 mb-2.5">
@@ -110,20 +137,6 @@ function SkillsSection({ t }) {
               </h4>
               <p className="text-slate-600 dark:text-slate-300 text-[0.82rem] leading-relaxed m-0 mt-1">
                 {t?.projects?.webGame?.desc || "A browser-based game focused on responsive UI and smooth user interaction."}
-              </p>
-            </div>
-            <div className="flex flex-col justify-center min-h-[140px] p-4 bg-gradient-to-br from-white to-gray-50 dark:from-slate-800 dark:to-slate-900 rounded-lg border border-[#dbe1e8] dark:border-slate-700/80 relative overflow-hidden group hover:shadow-xl hover:border-[#005e52]/30 dark:hover:border-secondary/50 transition-all duration-300">
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary" />
-              <div className="flex items-center justify-between gap-2 mb-2.5">
-                <span className="px-2.5 py-1 rounded-md text-[0.72rem] font-semibold text-primary dark:text-secondary bg-[#005e52]/10 dark:bg-secondary/20 border border-[#005e52]/20 dark:border-secondary/30 whitespace-nowrap">
-                  {t?.inProgress || "In Progress"}
-                </span>
-              </div>
-              <h4 className="text-primary dark:text-secondary text-base font-semibold m-0 group-hover:text-secondary dark:group-hover:text-white transition-colors">
-                {t?.projects?.mlProject?.title || "ML Project"}
-              </h4>
-              <p className="text-slate-600 dark:text-slate-300 text-[0.82rem] leading-relaxed m-0 mt-1">
-                {t?.projects?.mlProject?.desc || "An ML experiment pipeline for image classification."}
               </p>
             </div>
           </div>
