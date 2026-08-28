@@ -75,8 +75,32 @@ function SkillsSection({ t }) {
           <h3 className="text-xl font-semibold text-primary dark:text-secondary mb-6">
             {t?.sideProjects || "Current Side Projects"}
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            {/* 1. Face Mask Classification */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                        {/* 0. YouTube Studio Downloader */}
+            <a
+              href="https://github.com/zenclaut/youtube-downloader"
+              target="_blank"
+              rel="noreferrer"
+              className="flex flex-col justify-center min-h-[140px] p-4 bg-gradient-to-br from-white to-gray-50 dark:from-slate-800 dark:to-slate-900 rounded-lg border border-[#dbe1e8] dark:border-slate-700/80 relative overflow-hidden group hover:shadow-xl hover:border-[#005e52]/30 dark:hover:border-secondary/50 transition-all duration-300 no-underline"
+            >
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary" />
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+                <span className="px-2.5 py-1 rounded-md text-[0.72rem] font-semibold text-secondary dark:text-secondary bg-[#009688]/10 dark:bg-secondary/20 border border-[#009688]/25 dark:border-secondary/30 whitespace-nowrap">
+                  {t?.projects?.youtubeDownloader?.status || "Completed · Aug 2026"}
+                </span>
+                <span className="inline-flex items-center gap-1.5 text-[0.72rem] font-medium text-secondary dark:text-secondary bg-[#009688]/10 dark:bg-secondary/15 border border-[#009688]/20 dark:border-secondary/25 px-2 py-1 rounded-md transition-all duration-300 group-hover:bg-secondary group-hover:text-white dark:group-hover:bg-secondary dark:group-hover:text-white group-hover:border-secondary group-hover:shadow-md">
+                  youtube-downloader <i className="fas fa-external-link-alt text-[10px]" />
+                </span>
+              </div>
+              <h4 className="text-primary dark:text-secondary text-base font-semibold m-0 group-hover:text-secondary dark:group-hover:text-white transition-colors">
+                {t?.projects?.youtubeDownloader?.title || "YouTube Studio Downloader"}
+              </h4>
+              <p className="text-slate-600 dark:text-slate-300 text-[0.82rem] leading-relaxed m-0 mt-1">
+                {t?.projects?.youtubeDownloader?.desc || "Dual-engine (Serverless + Turbo FFmpeg) Chrome extension for downloading YouTube MP4 & MP3 directly on page."}
+              </p>
+            </a>
+
+{/* 1. Face Mask Classification */}
             <a
               href="https://zenclaut.github.io/face-mask-ai/"
               target="_blank"

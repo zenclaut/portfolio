@@ -83,6 +83,11 @@ export const locales = {
       completed: "Completed · Aug 2026",
       inProgress: "In Progress",
       projects: {
+        youtubeDownloader: {
+          status: "Completed · Aug 2026",
+          title: "YouTube Studio Downloader",
+          desc: "A modern dual-engine (Serverless + Turbo FFmpeg) Chrome extension to download YouTube videos in MP4 & MP3 directly on page.",
+        },
         financeApp: {
           title: "Finance App",
           desc: "A personal finance tracker for budgeting, expenses, and monthly reports.",
@@ -255,6 +260,11 @@ export const locales = {
       completed: "Tamamlandı · Ağu 2026",
       inProgress: "Geliştiriliyor",
       projects: {
+        youtubeDownloader: {
+          status: "Tamamlandı · Ağu 2026",
+          title: "YouTube Studio Downloader",
+          desc: "Sayfadan ayrılmadan MP4 (1080p) ve MP3 (320kbps) indirme sağlayan çift motorlu (Serverless + Turbo FFmpeg) Chrome eklentisi.",
+        },
         financeApp: {
           title: "Finans Uygulaması",
           desc: "Bütçe takibi, gider analizi ve aylık finansal raporlar sunan kişisel finans uygulaması.",
@@ -409,6 +419,11 @@ export const locales = {
       completed: "Ukończono · Sie 2026",
       inProgress: "W trakcie",
       projects: {
+        youtubeDownloader: {
+          status: "Ukończono · Sie 2026",
+          title: "YouTube Studio Downloader",
+          desc: "Nowoczesne rozszerzenie Chrome z podwójnym silnikiem (Serverless + Turbo FFmpeg) do pobierania wideo i audio z YouTube w formatach MP4 i MP3.",
+        },
         financeApp: {
           title: "Aplikacja Finansowa",
           desc: "Śledzenie budżetu, wydatków i miesięcznych raportów finansowych.",
